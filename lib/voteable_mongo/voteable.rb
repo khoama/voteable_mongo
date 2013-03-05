@@ -11,7 +11,9 @@ module Mongo
       'up_count' => 0,
       'down_count' => 0,
       'count' => 0,
-      'point' => 0
+      'point' => 0,
+      'friend_vote_count' => 0,
+      'coach_vote_count' => 0
     }
 
     included do
@@ -168,6 +170,14 @@ module Mongo
     # Get the number of up votes
     def up_votes_count
       votes.try(:[], 'up_count') || 0
+    end
+    
+    def friend_vote_counts
+      votes.try(:[], 'friend_vote_count') || 0
+    end
+    
+    def coach_vote_counts
+      votes.try(:[], 'coach_vote_count') || 0
     end
 
     # Get the number of down votes

@@ -58,7 +58,7 @@ module Mongo
           end
         
           def new_vote_query_and_update(options)
-            if options[:value] == :up
+            if options[:value] == :up || options[:value] == :coach || options[:value] == :friend
               positive_voter_ids = 'votes.up'
               positive_votes_count = 'votes.up_count'
             else
@@ -77,7 +77,9 @@ module Mongo
               '$inc' => {
                 'votes.count' => +1,
                 positive_votes_count => +1,
-                'votes.point' => options[:voteable][options[:value]]
+                'votes.point' => options[:voteable][options[:value]],
+                'votes.friend_vote_count' => options[:value] == :friend ? +1 : +0,
+                'votes.friend_vote_count' => options[:value] == :coach ? +1 : +0
               }
             }
           end

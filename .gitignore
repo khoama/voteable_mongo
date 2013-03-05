@@ -10,3 +10,5 @@ pkg
 
 .idea/
 .yardoc/
+
+/.project
