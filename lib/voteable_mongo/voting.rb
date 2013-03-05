@@ -79,7 +79,7 @@ module Mongo
                 positive_votes_count => +1,
                 'votes.point' => options[:voteable][options[:value]],
                 'votes.friend_vote_count' => options[:value] == :friend ? +1 : +0,
-                'votes.friend_vote_count' => options[:value] == :coach ? +1 : +0
+                'votes.coach_vote_count' => options[:value] == :coach ? +1 : +0
               }
             }
           end
